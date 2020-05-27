@@ -1,0 +1,1 @@
+# Swift SDK for AppWrite
