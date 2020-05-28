@@ -23,7 +23,8 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
             name: "appwrite-swift-sdk",
-            dependencies: []),
+            dependencies: [],
+            path: "./Sources/Appwrite"),
         .testTarget(
             name: "appwrite-swift-sdkTests",
             dependencies: ["appwrite-swift-sdk"]),

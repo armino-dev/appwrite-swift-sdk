@@ -20,15 +20,12 @@ open class Client {
       "x-sdk-version": "appwrite:swift:0.0.1"
     ]
 
-    open var useCookies: Bool = false
-    
-    open var cookies: [HTTPCookie] = []
-    
+
     // MARK: Methods
 
     // default constructor
-    public init(useCookies: Bool = true) {
-        self.useCookies = useCookies
+    public init() {
+
     }
 
         ///
@@ -133,25 +130,6 @@ open class Client {
         }
         return output
     }
-    
-    func getCookies() -> [HTTPCookie] {
-        let storage = HTTPCookieStorage.shared
-        return storage.cookies(for: URL(string: self.endpoint)!) ?? []
-    }
-    
-    func setCookies(cookies: [HTTPCookie]) {
-        let storage = HTTPCookieStorage.shared
-        storage.setCookies(cookies, for: URL(string: self.endpoint), mainDocumentURL: nil)
-    }
-    
-    func deleteCookies() {
-        let storage = HTTPCookieStorage.shared
-        for cookie in getCookies() {
-            storage.deleteCookie(cookie)
-        }
-    }
-    
-    
 
     ///
     /// Make an API call
@@ -164,19 +142,8 @@ open class Client {
     /// @throws Exception
     ///
     func call(method:String, path:String = "", headers:[String: String] = [:], params:[String: Any] = [:]) -> Any {
-        
-        print(self.useCookies ? "Performing API call using cookies" : "No cookies used")
-        
-        print("Method: ", method)
-        print("Path: ", path)
-        print("Headers: ", headers)
-        print("Params: ", params)
-        
-        
+
         self.headers.merge(headers){(_, new) in new}
-        
-        print("All headers: ", self.headers)
-        
         let targetURL:URL = URL(string: self.endpoint + path + (( method == HTTPMethod.get.rawValue && !params.isEmpty ) ? "?" + httpBuildQuery(params: params) : ""))!
 
         var query: String = ""
@@ -190,7 +157,7 @@ open class Client {
               do {
                 let json = try JSONSerialization.data(withJSONObject:params, options: [])
                 query = String( data: json, encoding: String.Encoding.utf8)!
-              } catch {
+              } catch let error as NSError {
                 print("Failed to parse json: \(error.localizedDescription)")
               }
               break
@@ -200,35 +167,19 @@ open class Client {
         }
 
         var request = URLRequest(url: targetURL)
-        
-        let sessionConfig = URLSessionConfiguration.default
-        sessionConfig.httpCookieAcceptPolicy = .always
-        sessionConfig.httpCookieStorage = .shared
-        
-        //let session = URLSession.shared
-        let session = URLSession(configuration: sessionConfig)
-        
+        let session = URLSession.shared
+
         for (key, value) in self.headers {
             request.setValue(value, forHTTPHeaderField: key)
         }
-
-        request.httpMethod = method
-        request.setValue("appwrite://sdk.generator.app", forHTTPHeaderField: "Referer")
         
-        if (method.uppercased() == "POST") {
+        request.httpMethod = method
+        if (method.uppercased() != "GET") {
             request.httpBody = query.data(using: .utf8)
         }
-        
-        if (self.useCookies) {
-            request.httpShouldHandleCookies = true
-            request.setValue("Login: remember", forHTTPHeaderField: "Cookie")
-        }
-        
+
         let semaphore = DispatchSemaphore(value: 0)
 
-        self.cookies = self.getCookies()
-        print("Cookies before request: ", self.cookies)
-        
         session.dataTask(with: request) { data, response, error in
             if (error != nil) {
                 print(error!)
@@ -245,19 +196,14 @@ open class Client {
 
                 responseType = httpResponse.mimeType ?? ""
                 
-                //print("All HTTP Headers: ", httpResponse.allHeaderFields)
-                
-                if (self.useCookies && (httpResponse.allHeaderFields["Set-Cookie"] != nil)) {
-                    self.setCookies(cookies: HTTPCookie.cookies(withResponseHeaderFields: httpResponse.allHeaderFields["Set-Cookie"] as! [String : String], for: URL(string: self.endpoint)!))
-                }
-
                 if (responseType == "application/json") {
+                    print("Trying json")
                     let json = try JSONSerialization.jsonObject(with: data!, options: [])
                     responseBody = json
               } else {
                     responseBody = String(data: data!, encoding: String.Encoding.utf8)!
               }
-            } catch {
+            } catch let error as NSError {
                 print(error)
             }
 
@@ -265,10 +211,7 @@ open class Client {
         }.resume()
 
         _ = semaphore.wait(wallTimeout: .distantFuture)
-        
-        self.cookies = getCookies()
-        print("Cookies after set: ", cookies)
-        
+
         return responseBody
     }
 
@@ -313,8 +256,5 @@ extension Client {
       case trace
     }
 
-    public enum CustomError: Error {
-        case generalError(String)
-    }
 
 }

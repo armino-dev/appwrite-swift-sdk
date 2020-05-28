@@ -9,14 +9,12 @@ class Locale: Service
      * country code, country name, continent name, continent code, ip address and
      * suggested currency. You can use the locale header to get the data in a
      * supported language.
-     * 
-     * ([IP Geolocation by DB-IP](https://db-ip.com))
      *
      * @throws Exception
      * @return array
      */
 
-    func get() -> Array<Any> {
+    func getLocale() -> Array<Any> {
         let path: String = "/locale"
 
 
@@ -29,7 +27,7 @@ class Locale: Service
     }
 
     /**
-     * List Continents
+     * List Countries
      *
      * List of all continents. You can use the locale header to get the data in a
      * supported language.
@@ -76,7 +74,8 @@ class Locale: Service
      * List EU Countries
      *
      * List of all countries that are currently members of the EU. You can use the
-     * locale header to get the data in a supported language.
+     * locale header to get the data in a supported language. UK brexit date is
+     * currently set to 2019-10-31 and will be updated if and when needed.
      *
      * @throws Exception
      * @return array

@@ -40,20 +40,20 @@ class Storage: Service
      * assigned to read and write access unless he has passed custom values for
      * read and write arguments.
      *
-     * @param Array<Any> _file
+     * @param Array<Any> _files
      * @param Array<Any> _read
      * @param Array<Any> _write
      * @throws Exception
      * @return array
      */
 
-    func createFile(_file: Array<Any>, _read: Array<Any>, _write: Array<Any>) -> Array<Any> {
+    func createFile(_files: Array<Any>, _read: Array<Any>, _write: Array<Any>) -> Array<Any> {
         let path: String = "/storage/files"
 
 
                 var params: [String: Any] = [:]
         
-        params["file"] = _file
+        params["files"] = _files
         params["read"] = _read
         params["write"] = _write
 
@@ -178,9 +178,9 @@ class Storage: Service
     /**
      * Get File Preview
      *
-     * Get a file preview image. Currently, this method supports preview for image
+     * Get file preview image. Currently, this method supports preview for image
      * files (jpg, png, and gif), other supported formats, like pdf, docs, slides,
-     * and spreadsheets, will return the file icon image. You can also pass query
+     * and spreadsheets will return file icon image. You can also pass query
      * string arguments for cutting and resizing your preview image.
      *
      * @param String _fileId

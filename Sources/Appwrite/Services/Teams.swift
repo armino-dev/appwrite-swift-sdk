@@ -17,7 +17,7 @@ class Teams: Service
      * @return array
      */
 
-    func list(_search: String = "", _limit: Int = 25, _offset: Int = 0, _orderType: String = "ASC") -> Array<Any> {
+    func listTeams(_search: String = "", _limit: Int = 25, _offset: Int = 0, _orderType: String = "ASC") -> Array<Any> {
         let path: String = "/teams"
 
 
@@ -47,7 +47,7 @@ class Teams: Service
      * @return array
      */
 
-    func create(_name: String, _roles: Array<Any> = ["owner"]) -> Array<Any> {
+    func createTeam(_name: String, _roles: Array<Any> = ["owner"]) -> Array<Any> {
         let path: String = "/teams"
 
 
@@ -72,7 +72,7 @@ class Teams: Service
      * @return array
      */
 
-    func get(_teamId: String) -> Array<Any> {
+    func getTeam(_teamId: String) -> Array<Any> {
         var path: String = "/teams/{teamId}"
 
         path = path.replacingOccurrences(
@@ -100,7 +100,7 @@ class Teams: Service
      * @return array
      */
 
-    func update(_teamId: String, _name: String) -> Array<Any> {
+    func updateTeam(_teamId: String, _name: String) -> Array<Any> {
         var path: String = "/teams/{teamId}"
 
         path = path.replacingOccurrences(
@@ -128,7 +128,7 @@ class Teams: Service
      * @return array
      */
 
-    func delete(_teamId: String) -> Array<Any> {
+    func deleteTeam(_teamId: String) -> Array<Any> {
         var path: String = "/teams/{teamId}"
 
         path = path.replacingOccurrences(
@@ -145,7 +145,7 @@ class Teams: Service
     }
 
     /**
-     * Get Team Memberships
+     * Get Team Members
      *
      * Get team members by the team unique ID. All team members have read access
      * for this list of resources.
@@ -155,8 +155,8 @@ class Teams: Service
      * @return array
      */
 
-    func getMemberships(_teamId: String) -> Array<Any> {
-        var path: String = "/teams/{teamId}/memberships"
+    func getTeamMembers(_teamId: String) -> Array<Any> {
+        var path: String = "/teams/{teamId}/members"
 
         path = path.replacingOccurrences(
           of: "{teamId}",
@@ -174,16 +174,16 @@ class Teams: Service
     /**
      * Create Team Membership
      *
-     * Use this endpoint to invite a new member to join your team. An email with a
-     * link to join the team will be sent to the new member email address if the
-     * member doesn't exist in the project it will be created automatically.
+     * Use this endpoint to invite a new member to your team. An email with a link
+     * to join the team will be sent to the new member email address. If member
+     * doesn't exists in the project it will be automatically created.
      * 
-     * Use the 'URL' parameter to redirect the user from the invitation email back
-     * to your app. When the user is redirected, use the [Update Team Membership
-     * Status](/docs/teams#updateMembershipStatus) endpoint to allow the user to
-     * accept the invitation to the team.
+     * Use the redirect parameter to redirect the user from the invitation email
+     * back to your app. When the user is redirected, use the
+     * /teams/{teamId}/memberships/{inviteId}/status endpoint to finally join the
+     * user to the team.
      * 
-     * Please note that in order to avoid a [Redirect
+     * Please notice that in order to avoid a [Redirect
      * Attacks](https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Unvalidated_Redirects_and_Forwards_Cheat_Sheet.md)
      * the only valid redirect URL's are the once from domains you have set when
      * added your platforms in the console interface.
@@ -191,13 +191,13 @@ class Teams: Service
      * @param String _teamId
      * @param String _email
      * @param Array<Any> _roles
-     * @param String _url
+     * @param String _redirect
      * @param String _name
      * @throws Exception
      * @return array
      */
 
-    func createMembership(_teamId: String, _email: String, _roles: Array<Any>, _url: String, _name: String = "") -> Array<Any> {
+    func createTeamMembership(_teamId: String, _email: String, _roles: Array<Any>, _redirect: String, _name: String = "") -> Array<Any> {
         var path: String = "/teams/{teamId}/memberships"
 
         path = path.replacingOccurrences(
@@ -210,7 +210,7 @@ class Teams: Service
         params["email"] = _email
         params["name"] = _name
         params["roles"] = _roles
-        params["url"] = _url
+        params["redirect"] = _redirect
 
         return [self.client.call(method: Client.HTTPMethod.post.rawValue, path: path, headers: [
             "content-type": "application/json",
@@ -221,8 +221,7 @@ class Teams: Service
      * Delete Team Membership
      *
      * This endpoint allows a user to leave a team or for a team owner to delete
-     * the membership of any other team member. You can also use this endpoint to
-     * delete a user membership even if he didn't accept it.
+     * the membership of any other team member.
      *
      * @param String _teamId
      * @param String _inviteId
@@ -230,7 +229,7 @@ class Teams: Service
      * @return array
      */
 
-    func deleteMembership(_teamId: String, _inviteId: String) -> Array<Any> {
+    func deleteTeamMembership(_teamId: String, _inviteId: String) -> Array<Any> {
         var path: String = "/teams/{teamId}/memberships/{inviteId}"
 
         path = path.replacingOccurrences(
@@ -251,21 +250,69 @@ class Teams: Service
     }
 
     /**
+     * Create Team Membership (Resend)
+     *
+     * Use this endpoint to resend your invitation email for a user to join a
+     * team.
+     *
+     * @param String _teamId
+     * @param String _inviteId
+     * @param String _redirect
+     * @throws Exception
+     * @return array
+     */
+
+    func createTeamMembershipResend(_teamId: String, _inviteId: String, _redirect: String) -> Array<Any> {
+        var path: String = "/teams/{teamId}/memberships/{inviteId}/resend"
+
+        path = path.replacingOccurrences(
+          of: "{teamId}",
+          with: _teamId
+        )
+        path = path.replacingOccurrences(
+          of: "{inviteId}",
+          with: _inviteId
+        )
+
+                var params: [String: Any] = [:]
+        
+        params["redirect"] = _redirect
+
+        return [self.client.call(method: Client.HTTPMethod.post.rawValue, path: path, headers: [
+            "content-type": "application/json",
+        ], params: params)];
+    }
+
+    /**
      * Update Team Membership Status
      *
-     * Use this endpoint to allow a user to accept an invitation to join a team
-     * after he is being redirected back to your app from the invitation email he
-     * was sent.
+     * Use this endpoint to let user accept an invitation to join a team after he
+     * is being redirect back to your app from the invitation email. Use the
+     * success and failure URL's to redirect users back to your application after
+     * the request completes.
+     * 
+     * Please notice that in order to avoid a [Redirect
+     * Attacks](https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Unvalidated_Redirects_and_Forwards_Cheat_Sheet.md)
+     * the only valid redirect URL's are the once from domains you have set when
+     * added your platforms in the console interface.
+     * 
+     * When not using the success or failure redirect arguments this endpoint will
+     * result with a 200 status code on success and with 401 status error on
+     * failure. This behavior was applied to help the web clients deal with
+     * browsers who don't allow to set 3rd party HTTP cookies needed for saving
+     * the account session token.
      *
      * @param String _teamId
      * @param String _inviteId
      * @param String _userId
      * @param String _secret
+     * @param String _success
+     * @param String _failure
      * @throws Exception
      * @return array
      */
 
-    func updateMembershipStatus(_teamId: String, _inviteId: String, _userId: String, _secret: String) -> Array<Any> {
+    func updateTeamMembershipStatus(_teamId: String, _inviteId: String, _userId: String, _secret: String, _success: String = "", _failure: String = "") -> Array<Any> {
         var path: String = "/teams/{teamId}/memberships/{inviteId}/status"
 
         path = path.replacingOccurrences(
@@ -281,6 +328,8 @@ class Teams: Service
         
         params["userId"] = _userId
         params["secret"] = _secret
+        params["success"] = _success
+        params["failure"] = _failure
 
         return [self.client.call(method: Client.HTTPMethod.patch.rawValue, path: path, headers: [
             "content-type": "application/json",
