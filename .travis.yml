@@ -4,5 +4,5 @@ os: osx
 jobs:
     include:
         - name: Swift Build (Swift Package Manager)
-          osx_image: xcode11
+          osx_image: xcode11.5
           script: swift build
