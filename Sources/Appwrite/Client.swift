@@ -42,7 +42,7 @@ open class Client {
     ///
     open func setProject(value: String) -> Client {
 
-        self.addHeader(key: "X-Appwrite-Project", value: value)
+        _ = self.addHeader(key: "X-Appwrite-Project", value: value)
         return self
     }
 
@@ -57,7 +57,7 @@ open class Client {
     ///
     open func setKey(value: String) -> Client {
 
-        self.addHeader(key: "X-Appwrite-Key", value: value)
+        _ = self.addHeader(key: "X-Appwrite-Key", value: value)
         return self
     }
 
@@ -70,7 +70,7 @@ open class Client {
     ///
     open func setLocale(value: String) -> Client {
 
-        self.addHeader(key: "X-Appwrite-Locale", value: value)
+        _ = self.addHeader(key: "X-Appwrite-Locale", value: value)
         return self
     }
 
@@ -83,7 +83,7 @@ open class Client {
     ///
     open func setMode(value: String) -> Client {
 
-        self.addHeader(key: "X-Appwrite-Mode", value: value)
+        _ = self.addHeader(key: "X-Appwrite-Mode", value: value)
         return self
     }
 
@@ -94,7 +94,7 @@ open class Client {
     ///
     open func setSelfSigned(status: Bool = true) -> Client {
 
-        self.selfSigned = status
+        _ = self.selfSigned = status
         return self
     }
 
@@ -104,7 +104,7 @@ open class Client {
     ///
     open func setEndpoint(endpoint: String) -> Client {
 
-        self.endpoint = endpoint
+        _ = self.endpoint = endpoint
         return self
     }
 
@@ -114,7 +114,7 @@ open class Client {
     ///
     open func addHeader(key: String, value: String) -> Client {
 
-        self.headers[key.lowercased()] = value.lowercased()
+        _ = self.headers[key.lowercased()] = value.lowercased()
 
         return self
     }
