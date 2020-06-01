@@ -1,6 +1,6 @@
 
 
-class Avatars: Service
+open class Avatars: Service
 {
     /**
      * Get Browser Icon
@@ -18,7 +18,7 @@ class Avatars: Service
      * @return array
      */
 
-    func getBrowser(_code: String, _width: Int = 100, _height: Int = 100, _quality: Int = 100) -> Array<Any> {
+    open func getBrowser(_code: String, _width: Int = 100, _height: Int = 100, _quality: Int = 100) -> Array<Any> {
         var path: String = "/avatars/browsers/{code}"
 
         path = path.replacingOccurrences(
@@ -53,7 +53,7 @@ class Avatars: Service
      * @return array
      */
 
-    func getCreditCard(_code: String, _width: Int = 100, _height: Int = 100, _quality: Int = 100) -> Array<Any> {
+    open func getCreditCard(_code: String, _width: Int = 100, _height: Int = 100, _quality: Int = 100) -> Array<Any> {
         var path: String = "/avatars/credit-cards/{code}"
 
         path = path.replacingOccurrences(
@@ -83,7 +83,7 @@ class Avatars: Service
      * @return array
      */
 
-    func getFavicon(_url: String) -> Array<Any> {
+    open func getFavicon(_url: String) -> Array<Any> {
         let path: String = "/avatars/favicon"
 
 
@@ -111,7 +111,7 @@ class Avatars: Service
      * @return array
      */
 
-    func getFlag(_code: String, _width: Int = 100, _height: Int = 100, _quality: Int = 100) -> Array<Any> {
+    open func getFlag(_code: String, _width: Int = 100, _height: Int = 100, _quality: Int = 100) -> Array<Any> {
         var path: String = "/avatars/flags/{code}"
 
         path = path.replacingOccurrences(
@@ -145,7 +145,7 @@ class Avatars: Service
      * @return array
      */
 
-    func getImage(_url: String, _width: Int = 400, _height: Int = 400) -> Array<Any> {
+    open func getImage(_url: String, _width: Int = 400, _height: Int = 400) -> Array<Any> {
         let path: String = "/avatars/image"
 
 
@@ -174,7 +174,7 @@ class Avatars: Service
      * @return array
      */
 
-    func getQR(_text: String, _size: Int = 400, _margin: Int = 1, _download: Int = 0) -> Array<Any> {
+    open func getQR(_text: String, _size: Int = 400, _margin: Int = 1, _download: Int = 0) -> Array<Any> {
         let path: String = "/avatars/qr"
 
 

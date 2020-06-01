@@ -17,7 +17,7 @@ open class Client {
 
     open var headers: [String: String] = [
       "content-type": "",
-      "x-sdk-version": "appwrite:swift:0.0.1"
+      "x-sdk-version": "appwrite:swift:0.6.2"
     ]
 
     open var useCookies: Bool = false

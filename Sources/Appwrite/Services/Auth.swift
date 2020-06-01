@@ -1,6 +1,6 @@
 
 
-class Auth: Service
+open class Auth: Service
 {
     /**
      * Login
@@ -28,7 +28,7 @@ class Auth: Service
      * @return array
      */
 
-    func login(_email: String, _password: String, _success: String = "", _failure: String = "") -> Array<Any> {
+    open func login(_email: String, _password: String, _success: String = "", _failure: String = "") -> Array<Any> {
         let path: String = "/auth/login"
 
 
@@ -59,7 +59,7 @@ class Auth: Service
      * @return array
      */
 
-    func oauth(_provider: String, _success: String, _failure: String) -> Array<Any> {
+    open func oauth(_provider: String, _success: String, _failure: String) -> Array<Any> {
         var path: String = "/auth/login/oauth/{provider}"
 
         path = path.replacingOccurrences(
@@ -88,7 +88,7 @@ class Auth: Service
      * @return array
      */
 
-    func logout() -> Array<Any> {
+    open func logout() -> Array<Any> {
         let path: String = "/auth/logout"
 
 
@@ -112,7 +112,7 @@ class Auth: Service
      * @return array
      */
 
-    func logoutBySession(_id: String) -> Array<Any> {
+    open func logoutBySession(_id: String) -> Array<Any> {
         var path: String = "/auth/logout/{id}"
 
         path = path.replacingOccurrences(
@@ -144,7 +144,7 @@ class Auth: Service
      * @return array
      */
 
-    func recovery(_email: String, _reset: String) -> Array<Any> {
+    open func recovery(_email: String, _reset: String) -> Array<Any> {
         let path: String = "/auth/recovery"
 
 
@@ -179,7 +179,7 @@ class Auth: Service
      * @return array
      */
 
-    func recoveryReset(_userId: String, _token: String, _passwordA: String, _passwordB: String) -> Array<Any> {
+    open func recoveryReset(_userId: String, _token: String, _passwordA: String, _passwordB: String) -> Array<Any> {
         let path: String = "/auth/recovery/reset"
 
 
@@ -229,7 +229,7 @@ class Auth: Service
      * @return array
      */
 
-    func register(_email: String, _password: String, _confirm: String, _success: String = "", _failure: String = "", _name: String = "") -> Array<Any> {
+    open func register(_email: String, _password: String, _confirm: String, _success: String = "", _failure: String = "", _name: String = "") -> Array<Any> {
         let path: String = "/auth/register"
 
 
@@ -261,7 +261,7 @@ class Auth: Service
      * @return array
      */
 
-    func confirm(_userId: String, _token: String) -> Array<Any> {
+    open func confirm(_userId: String, _token: String) -> Array<Any> {
         let path: String = "/auth/register/confirm"
 
 
@@ -292,7 +292,7 @@ class Auth: Service
      * @return array
      */
 
-    func confirmResend(_confirm: String) -> Array<Any> {
+    open func confirmResend(_confirm: String) -> Array<Any> {
         let path: String = "/auth/register/confirm/resend"
 
 

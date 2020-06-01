@@ -1,6 +1,6 @@
 
 
-class Account: Service
+open class Account: Service
 {
     /**
      * Get Account
@@ -11,7 +11,7 @@ class Account: Service
      * @return array
      */
 
-    func get() -> Array<Any> {
+    open func get() -> Array<Any> {
         let path: String = "/account"
 
 
@@ -36,7 +36,7 @@ class Account: Service
      * @return array
      */
 
-    func delete() -> Array<Any> {
+    open func delete() -> Array<Any> {
         let path: String = "/account"
 
 
@@ -62,7 +62,7 @@ class Account: Service
      * @return array
      */
 
-    func updateEmail(_email: String, _password: String) -> Array<Any> {
+    open func updateEmail(_email: String, _password: String) -> Array<Any> {
         let path: String = "/account/email"
 
 
@@ -86,7 +86,7 @@ class Account: Service
      * @return array
      */
 
-    func updateName(_name: String) -> Array<Any> {
+    open func updateName(_name: String) -> Array<Any> {
         let path: String = "/account/name"
 
 
@@ -111,7 +111,7 @@ class Account: Service
      * @return array
      */
 
-    func updatePassword(_password: String, _oldPassword: String) -> Array<Any> {
+    open func updatePassword(_password: String, _oldPassword: String) -> Array<Any> {
         let path: String = "/account/password"
 
 
@@ -134,7 +134,7 @@ class Account: Service
      * @return array
      */
 
-    func getPrefs() -> Array<Any> {
+    open func getPrefs() -> Array<Any> {
         let path: String = "/account/prefs"
 
 
@@ -157,7 +157,7 @@ class Account: Service
      * @return array
      */
 
-    func updatePrefs(_prefs: String) -> Array<Any> {
+    open func updatePrefs(_prefs: String) -> Array<Any> {
         let path: String = "/account/prefs"
 
 
@@ -180,7 +180,7 @@ class Account: Service
      * @return array
      */
 
-    func getSecurity() -> Array<Any> {
+    open func getSecurity() -> Array<Any> {
         let path: String = "/account/security"
 
 
@@ -202,7 +202,7 @@ class Account: Service
      * @return array
      */
 
-    func getSessions() -> Array<Any> {
+    open func getSessions() -> Array<Any> {
         let path: String = "/account/sessions"
 
 

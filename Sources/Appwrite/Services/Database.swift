@@ -1,6 +1,6 @@
 
 
-class Database: Service
+open class Database: Service
 {
     /**
      * List Collections
@@ -18,7 +18,7 @@ class Database: Service
      * @return array
      */
 
-    func listCollections(_search: String = "", _limit: Int = 25, _offset: Int = 0, _orderType: String = "ASC") -> Array<Any> {
+    open func listCollections(_search: String = "", _limit: Int = 25, _offset: Int = 0, _orderType: String = "ASC") -> Array<Any> {
         let path: String = "/database"
 
 
@@ -47,7 +47,7 @@ class Database: Service
      * @return array
      */
 
-    func createCollection(_name: String, _read: Array<Any>, _write: Array<Any>, _rules: Array<Any>) -> Array<Any> {
+    open func createCollection(_name: String, _read: Array<Any>, _write: Array<Any>, _rules: Array<Any>) -> Array<Any> {
         let path: String = "/database"
 
 
@@ -74,7 +74,7 @@ class Database: Service
      * @return array
      */
 
-    func getCollection(_collectionId: String) -> Array<Any> {
+    open func getCollection(_collectionId: String) -> Array<Any> {
         var path: String = "/database/{collectionId}"
 
         path = path.replacingOccurrences(
@@ -104,7 +104,7 @@ class Database: Service
      * @return array
      */
 
-    func updateCollection(_collectionId: String, _name: String, _read: Array<Any>, _write: Array<Any>, _rules: Array<Any> = []) -> Array<Any> {
+    open func updateCollection(_collectionId: String, _name: String, _read: Array<Any>, _write: Array<Any>, _rules: Array<Any> = []) -> Array<Any> {
         var path: String = "/database/{collectionId}"
 
         path = path.replacingOccurrences(
@@ -135,7 +135,7 @@ class Database: Service
      * @return array
      */
 
-    func deleteCollection(_collectionId: String) -> Array<Any> {
+    open func deleteCollection(_collectionId: String) -> Array<Any> {
         var path: String = "/database/{collectionId}"
 
         path = path.replacingOccurrences(
@@ -173,7 +173,7 @@ class Database: Service
      * @return array
      */
 
-    func listDocuments(_collectionId: String, _filters: Array<Any> = [], _offset: Int = 0, _limit: Int = 50, _orderField: String = "$uid", _orderType: String = "ASC", _orderCast: String = "string", _search: String = "", _first: Int = 0, _last: Int = 0) -> Array<Any> {
+    open func listDocuments(_collectionId: String, _filters: Array<Any> = [], _offset: Int = 0, _limit: Int = 50, _orderField: String = "$uid", _orderType: String = "ASC", _orderCast: String = "string", _search: String = "", _first: Int = 0, _last: Int = 0) -> Array<Any> {
         var path: String = "/database/{collectionId}/documents"
 
         path = path.replacingOccurrences(
@@ -214,7 +214,7 @@ class Database: Service
      * @return array
      */
 
-    func createDocument(_collectionId: String, _data: String, _read: Array<Any>, _write: Array<Any>, _parentDocument: String = "", _parentProperty: String = "", _parentPropertyType: String = "assign") -> Array<Any> {
+    open func createDocument(_collectionId: String, _data: String, _read: Array<Any>, _write: Array<Any>, _parentDocument: String = "", _parentProperty: String = "", _parentPropertyType: String = "assign") -> Array<Any> {
         var path: String = "/database/{collectionId}/documents"
 
         path = path.replacingOccurrences(
@@ -248,7 +248,7 @@ class Database: Service
      * @return array
      */
 
-    func getDocument(_collectionId: String, _documentId: String) -> Array<Any> {
+    open func getDocument(_collectionId: String, _documentId: String) -> Array<Any> {
         var path: String = "/database/{collectionId}/documents/{documentId}"
 
         path = path.replacingOccurrences(
@@ -280,7 +280,7 @@ class Database: Service
      * @return array
      */
 
-    func updateDocument(_collectionId: String, _documentId: String, _data: String, _read: Array<Any>, _write: Array<Any>) -> Array<Any> {
+    open func updateDocument(_collectionId: String, _documentId: String, _data: String, _read: Array<Any>, _write: Array<Any>) -> Array<Any> {
         var path: String = "/database/{collectionId}/documents/{documentId}"
 
         path = path.replacingOccurrences(
@@ -316,7 +316,7 @@ class Database: Service
      * @return array
      */
 
-    func deleteDocument(_collectionId: String, _documentId: String) -> Array<Any> {
+    open func deleteDocument(_collectionId: String, _documentId: String) -> Array<Any> {
         var path: String = "/database/{collectionId}/documents/{documentId}"
 
         path = path.replacingOccurrences(

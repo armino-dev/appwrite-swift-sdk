@@ -1,6 +1,6 @@
 
 
-class Teams: Service
+open class Teams: Service
 {
     /**
      * List Teams
@@ -17,7 +17,7 @@ class Teams: Service
      * @return array
      */
 
-    func listTeams(_search: String = "", _limit: Int = 25, _offset: Int = 0, _orderType: String = "ASC") -> Array<Any> {
+    open func listTeams(_search: String = "", _limit: Int = 25, _offset: Int = 0, _orderType: String = "ASC") -> Array<Any> {
         let path: String = "/teams"
 
 
@@ -47,7 +47,7 @@ class Teams: Service
      * @return array
      */
 
-    func createTeam(_name: String, _roles: Array<Any> = ["owner"]) -> Array<Any> {
+    open func createTeam(_name: String, _roles: Array<Any> = ["owner"]) -> Array<Any> {
         let path: String = "/teams"
 
 
@@ -72,7 +72,7 @@ class Teams: Service
      * @return array
      */
 
-    func getTeam(_teamId: String) -> Array<Any> {
+    open func getTeam(_teamId: String) -> Array<Any> {
         var path: String = "/teams/{teamId}"
 
         path = path.replacingOccurrences(
@@ -100,7 +100,7 @@ class Teams: Service
      * @return array
      */
 
-    func updateTeam(_teamId: String, _name: String) -> Array<Any> {
+    open func updateTeam(_teamId: String, _name: String) -> Array<Any> {
         var path: String = "/teams/{teamId}"
 
         path = path.replacingOccurrences(
@@ -128,7 +128,7 @@ class Teams: Service
      * @return array
      */
 
-    func deleteTeam(_teamId: String) -> Array<Any> {
+    open func deleteTeam(_teamId: String) -> Array<Any> {
         var path: String = "/teams/{teamId}"
 
         path = path.replacingOccurrences(
@@ -155,7 +155,7 @@ class Teams: Service
      * @return array
      */
 
-    func getTeamMembers(_teamId: String) -> Array<Any> {
+    open func getTeamMembers(_teamId: String) -> Array<Any> {
         var path: String = "/teams/{teamId}/members"
 
         path = path.replacingOccurrences(
@@ -197,7 +197,7 @@ class Teams: Service
      * @return array
      */
 
-    func createTeamMembership(_teamId: String, _email: String, _roles: Array<Any>, _redirect: String, _name: String = "") -> Array<Any> {
+    open func createTeamMembership(_teamId: String, _email: String, _roles: Array<Any>, _redirect: String, _name: String = "") -> Array<Any> {
         var path: String = "/teams/{teamId}/memberships"
 
         path = path.replacingOccurrences(
@@ -229,7 +229,7 @@ class Teams: Service
      * @return array
      */
 
-    func deleteTeamMembership(_teamId: String, _inviteId: String) -> Array<Any> {
+    open func deleteTeamMembership(_teamId: String, _inviteId: String) -> Array<Any> {
         var path: String = "/teams/{teamId}/memberships/{inviteId}"
 
         path = path.replacingOccurrences(
@@ -262,7 +262,7 @@ class Teams: Service
      * @return array
      */
 
-    func createTeamMembershipResend(_teamId: String, _inviteId: String, _redirect: String) -> Array<Any> {
+    open func createTeamMembershipResend(_teamId: String, _inviteId: String, _redirect: String) -> Array<Any> {
         var path: String = "/teams/{teamId}/memberships/{inviteId}/resend"
 
         path = path.replacingOccurrences(
@@ -312,7 +312,7 @@ class Teams: Service
      * @return array
      */
 
-    func updateTeamMembershipStatus(_teamId: String, _inviteId: String, _userId: String, _secret: String, _success: String = "", _failure: String = "") -> Array<Any> {
+    open func updateTeamMembershipStatus(_teamId: String, _inviteId: String, _userId: String, _secret: String, _success: String = "", _failure: String = "") -> Array<Any> {
         var path: String = "/teams/{teamId}/memberships/{inviteId}/status"
 
         path = path.replacingOccurrences(

@@ -1,6 +1,6 @@
 
 
-class Locale: Service
+open class Locale: Service
 {
     /**
      * Get User Locale
@@ -14,7 +14,7 @@ class Locale: Service
      * @return array
      */
 
-    func getLocale() -> Array<Any> {
+    open func getLocale() -> Array<Any> {
         let path: String = "/locale"
 
 
@@ -36,7 +36,7 @@ class Locale: Service
      * @return array
      */
 
-    func getContinents() -> Array<Any> {
+    open func getContinents() -> Array<Any> {
         let path: String = "/locale/continents"
 
 
@@ -58,7 +58,7 @@ class Locale: Service
      * @return array
      */
 
-    func getCountries() -> Array<Any> {
+    open func getCountries() -> Array<Any> {
         let path: String = "/locale/countries"
 
 
@@ -81,7 +81,7 @@ class Locale: Service
      * @return array
      */
 
-    func getCountriesEU() -> Array<Any> {
+    open func getCountriesEU() -> Array<Any> {
         let path: String = "/locale/countries/eu"
 
 
@@ -103,7 +103,7 @@ class Locale: Service
      * @return array
      */
 
-    func getCountriesPhones() -> Array<Any> {
+    open func getCountriesPhones() -> Array<Any> {
         let path: String = "/locale/countries/phones"
 
 
@@ -126,7 +126,7 @@ class Locale: Service
      * @return array
      */
 
-    func getCurrencies() -> Array<Any> {
+    open func getCurrencies() -> Array<Any> {
         let path: String = "/locale/currencies"
 
 

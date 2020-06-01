@@ -1,6 +1,6 @@
 
 
-class Storage: Service
+open class Storage: Service
 {
     /**
      * List Files
@@ -17,7 +17,7 @@ class Storage: Service
      * @return array
      */
 
-    func listFiles(_search: String = "", _limit: Int = 25, _offset: Int = 0, _orderType: String = "ASC") -> Array<Any> {
+    open func listFiles(_search: String = "", _limit: Int = 25, _offset: Int = 0, _orderType: String = "ASC") -> Array<Any> {
         let path: String = "/storage/files"
 
 
@@ -47,7 +47,7 @@ class Storage: Service
      * @return array
      */
 
-    func createFile(_files: Array<Any>, _read: Array<Any>, _write: Array<Any>) -> Array<Any> {
+    open func createFile(_files: Array<Any>, _read: Array<Any>, _write: Array<Any>) -> Array<Any> {
         let path: String = "/storage/files"
 
 
@@ -73,7 +73,7 @@ class Storage: Service
      * @return array
      */
 
-    func getFile(_fileId: String) -> Array<Any> {
+    open func getFile(_fileId: String) -> Array<Any> {
         var path: String = "/storage/files/{fileId}"
 
         path = path.replacingOccurrences(
@@ -102,7 +102,7 @@ class Storage: Service
      * @return array
      */
 
-    func updateFile(_fileId: String, _read: Array<Any>, _write: Array<Any>) -> Array<Any> {
+    open func updateFile(_fileId: String, _read: Array<Any>, _write: Array<Any>) -> Array<Any> {
         var path: String = "/storage/files/{fileId}"
 
         path = path.replacingOccurrences(
@@ -131,7 +131,7 @@ class Storage: Service
      * @return array
      */
 
-    func deleteFile(_fileId: String) -> Array<Any> {
+    open func deleteFile(_fileId: String) -> Array<Any> {
         var path: String = "/storage/files/{fileId}"
 
         path = path.replacingOccurrences(
@@ -159,7 +159,7 @@ class Storage: Service
      * @return array
      */
 
-    func getFileDownload(_fileId: String) -> Array<Any> {
+    open func getFileDownload(_fileId: String) -> Array<Any> {
         var path: String = "/storage/files/{fileId}/download"
 
         path = path.replacingOccurrences(
@@ -193,7 +193,7 @@ class Storage: Service
      * @return array
      */
 
-    func getFilePreview(_fileId: String, _width: Int = 0, _height: Int = 0, _quality: Int = 100, _background: String = "", _output: String = "") -> Array<Any> {
+    open func getFilePreview(_fileId: String, _width: Int = 0, _height: Int = 0, _quality: Int = 100, _background: String = "", _output: String = "") -> Array<Any> {
         var path: String = "/storage/files/{fileId}/preview"
 
         path = path.replacingOccurrences(
@@ -226,7 +226,7 @@ class Storage: Service
      * @return array
      */
 
-    func getFileView(_fileId: String, _as: String = "") -> Array<Any> {
+    open func getFileView(_fileId: String, _as: String = "") -> Array<Any> {
         var path: String = "/storage/files/{fileId}/view"
 
         path = path.replacingOccurrences(

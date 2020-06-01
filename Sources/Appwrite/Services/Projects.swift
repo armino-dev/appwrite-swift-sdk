@@ -1,6 +1,6 @@
 
 
-class Projects: Service
+open class Projects: Service
 {
     /**
      * List Projects
@@ -9,7 +9,7 @@ class Projects: Service
      * @return array
      */
 
-    func listProjects() -> Array<Any> {
+    open func listProjects() -> Array<Any> {
         let path: String = "/projects"
 
 
@@ -39,7 +39,7 @@ class Projects: Service
      * @return array
      */
 
-    func createProject(_name: String, _teamId: String, _description: String = "", _logo: String = "", _url: String = "", _legalName: String = "", _legalCountry: String = "", _legalState: String = "", _legalCity: String = "", _legalAddress: String = "", _legalTaxId: String = "") -> Array<Any> {
+    open func createProject(_name: String, _teamId: String, _description: String = "", _logo: String = "", _url: String = "", _legalName: String = "", _legalCountry: String = "", _legalState: String = "", _legalCity: String = "", _legalAddress: String = "", _legalTaxId: String = "") -> Array<Any> {
         let path: String = "/projects"
 
 
@@ -70,7 +70,7 @@ class Projects: Service
      * @return array
      */
 
-    func getProject(_projectId: String) -> Array<Any> {
+    open func getProject(_projectId: String) -> Array<Any> {
         var path: String = "/projects/{projectId}"
 
         path = path.replacingOccurrences(
@@ -104,7 +104,7 @@ class Projects: Service
      * @return array
      */
 
-    func updateProject(_projectId: String, _name: String, _description: String = "", _logo: String = "", _url: String = "", _legalName: String = "", _legalCountry: String = "", _legalState: String = "", _legalCity: String = "", _legalAddress: String = "", _legalTaxId: String = "") -> Array<Any> {
+    open func updateProject(_projectId: String, _name: String, _description: String = "", _logo: String = "", _url: String = "", _legalName: String = "", _legalCountry: String = "", _legalState: String = "", _legalCity: String = "", _legalAddress: String = "", _legalTaxId: String = "") -> Array<Any> {
         var path: String = "/projects/{projectId}"
 
         path = path.replacingOccurrences(
@@ -138,7 +138,7 @@ class Projects: Service
      * @return array
      */
 
-    func deleteProject(_projectId: String) -> Array<Any> {
+    open func deleteProject(_projectId: String) -> Array<Any> {
         var path: String = "/projects/{projectId}"
 
         path = path.replacingOccurrences(
@@ -162,7 +162,7 @@ class Projects: Service
      * @return array
      */
 
-    func listKeys(_projectId: String) -> Array<Any> {
+    open func listKeys(_projectId: String) -> Array<Any> {
         var path: String = "/projects/{projectId}/keys"
 
         path = path.replacingOccurrences(
@@ -188,7 +188,7 @@ class Projects: Service
      * @return array
      */
 
-    func createKey(_projectId: String, _name: String, _scopes: Array<Any>) -> Array<Any> {
+    open func createKey(_projectId: String, _name: String, _scopes: Array<Any>) -> Array<Any> {
         var path: String = "/projects/{projectId}/keys"
 
         path = path.replacingOccurrences(
@@ -215,7 +215,7 @@ class Projects: Service
      * @return array
      */
 
-    func getKey(_projectId: String, _keyId: String) -> Array<Any> {
+    open func getKey(_projectId: String, _keyId: String) -> Array<Any> {
         var path: String = "/projects/{projectId}/keys/{keyId}"
 
         path = path.replacingOccurrences(
@@ -246,7 +246,7 @@ class Projects: Service
      * @return array
      */
 
-    func updateKey(_projectId: String, _keyId: String, _name: String, _scopes: Array<Any>) -> Array<Any> {
+    open func updateKey(_projectId: String, _keyId: String, _name: String, _scopes: Array<Any>) -> Array<Any> {
         var path: String = "/projects/{projectId}/keys/{keyId}"
 
         path = path.replacingOccurrences(
@@ -277,7 +277,7 @@ class Projects: Service
      * @return array
      */
 
-    func deleteKey(_projectId: String, _keyId: String) -> Array<Any> {
+    open func deleteKey(_projectId: String, _keyId: String) -> Array<Any> {
         var path: String = "/projects/{projectId}/keys/{keyId}"
 
         path = path.replacingOccurrences(
@@ -308,7 +308,7 @@ class Projects: Service
      * @return array
      */
 
-    func updateProjectOAuth(_projectId: String, _provider: String, _appId: String = "", _secret: String = "") -> Array<Any> {
+    open func updateProjectOAuth(_projectId: String, _provider: String, _appId: String = "", _secret: String = "") -> Array<Any> {
         var path: String = "/projects/{projectId}/oauth"
 
         path = path.replacingOccurrences(
@@ -335,7 +335,7 @@ class Projects: Service
      * @return array
      */
 
-    func listPlatforms(_projectId: String) -> Array<Any> {
+    open func listPlatforms(_projectId: String) -> Array<Any> {
         var path: String = "/projects/{projectId}/platforms"
 
         path = path.replacingOccurrences(
@@ -364,7 +364,7 @@ class Projects: Service
      * @return array
      */
 
-    func createPlatform(_projectId: String, _type: String, _name: String, _key: String = "", _store: String = "", _url: String = "") -> Array<Any> {
+    open func createPlatform(_projectId: String, _type: String, _name: String, _key: String = "", _store: String = "", _url: String = "") -> Array<Any> {
         var path: String = "/projects/{projectId}/platforms"
 
         path = path.replacingOccurrences(
@@ -394,7 +394,7 @@ class Projects: Service
      * @return array
      */
 
-    func getPlatform(_projectId: String, _platformId: String) -> Array<Any> {
+    open func getPlatform(_projectId: String, _platformId: String) -> Array<Any> {
         var path: String = "/projects/{projectId}/platforms/{platformId}"
 
         path = path.replacingOccurrences(
@@ -427,7 +427,7 @@ class Projects: Service
      * @return array
      */
 
-    func updatePlatform(_projectId: String, _platformId: String, _name: String, _key: String = "", _store: String = "", _url: String = "") -> Array<Any> {
+    open func updatePlatform(_projectId: String, _platformId: String, _name: String, _key: String = "", _store: String = "", _url: String = "") -> Array<Any> {
         var path: String = "/projects/{projectId}/platforms/{platformId}"
 
         path = path.replacingOccurrences(
@@ -460,7 +460,7 @@ class Projects: Service
      * @return array
      */
 
-    func deletePlatform(_projectId: String, _platformId: String) -> Array<Any> {
+    open func deletePlatform(_projectId: String, _platformId: String) -> Array<Any> {
         var path: String = "/projects/{projectId}/platforms/{platformId}"
 
         path = path.replacingOccurrences(
@@ -488,7 +488,7 @@ class Projects: Service
      * @return array
      */
 
-    func listTasks(_projectId: String) -> Array<Any> {
+    open func listTasks(_projectId: String) -> Array<Any> {
         var path: String = "/projects/{projectId}/tasks"
 
         path = path.replacingOccurrences(
@@ -521,7 +521,7 @@ class Projects: Service
      * @return array
      */
 
-    func createTask(_projectId: String, _name: String, _status: String, _schedule: String, _security: Int, _httpMethod: String, _httpUrl: String, _httpHeaders: Array<Any> = [], _httpUser: String = "", _httpPass: String = "") -> Array<Any> {
+    open func createTask(_projectId: String, _name: String, _status: String, _schedule: String, _security: Int, _httpMethod: String, _httpUrl: String, _httpHeaders: Array<Any> = [], _httpUser: String = "", _httpPass: String = "") -> Array<Any> {
         var path: String = "/projects/{projectId}/tasks"
 
         path = path.replacingOccurrences(
@@ -555,7 +555,7 @@ class Projects: Service
      * @return array
      */
 
-    func getTask(_projectId: String, _taskId: String) -> Array<Any> {
+    open func getTask(_projectId: String, _taskId: String) -> Array<Any> {
         var path: String = "/projects/{projectId}/tasks/{taskId}"
 
         path = path.replacingOccurrences(
@@ -593,7 +593,7 @@ class Projects: Service
      * @return array
      */
 
-    func updateTask(_projectId: String, _taskId: String, _name: String, _status: String, _schedule: String, _security: Int, _httpMethod: String, _httpUrl: String, _httpHeaders: Array<Any> = [], _httpUser: String = "", _httpPass: String = "") -> Array<Any> {
+    open func updateTask(_projectId: String, _taskId: String, _name: String, _status: String, _schedule: String, _security: Int, _httpMethod: String, _httpUrl: String, _httpHeaders: Array<Any> = [], _httpUser: String = "", _httpPass: String = "") -> Array<Any> {
         var path: String = "/projects/{projectId}/tasks/{taskId}"
 
         path = path.replacingOccurrences(
@@ -631,7 +631,7 @@ class Projects: Service
      * @return array
      */
 
-    func deleteTask(_projectId: String, _taskId: String) -> Array<Any> {
+    open func deleteTask(_projectId: String, _taskId: String) -> Array<Any> {
         var path: String = "/projects/{projectId}/tasks/{taskId}"
 
         path = path.replacingOccurrences(
@@ -659,7 +659,7 @@ class Projects: Service
      * @return array
      */
 
-    func getProjectUsage(_projectId: String) -> Array<Any> {
+    open func getProjectUsage(_projectId: String) -> Array<Any> {
         var path: String = "/projects/{projectId}/usage"
 
         path = path.replacingOccurrences(
@@ -683,7 +683,7 @@ class Projects: Service
      * @return array
      */
 
-    func listWebhooks(_projectId: String) -> Array<Any> {
+    open func listWebhooks(_projectId: String) -> Array<Any> {
         var path: String = "/projects/{projectId}/webhooks"
 
         path = path.replacingOccurrences(
@@ -713,7 +713,7 @@ class Projects: Service
      * @return array
      */
 
-    func createWebhook(_projectId: String, _name: String, _events: Array<Any>, _url: String, _security: Int, _httpUser: String = "", _httpPass: String = "") -> Array<Any> {
+    open func createWebhook(_projectId: String, _name: String, _events: Array<Any>, _url: String, _security: Int, _httpUser: String = "", _httpPass: String = "") -> Array<Any> {
         var path: String = "/projects/{projectId}/webhooks"
 
         path = path.replacingOccurrences(
@@ -744,7 +744,7 @@ class Projects: Service
      * @return array
      */
 
-    func getWebhook(_projectId: String, _webhookId: String) -> Array<Any> {
+    open func getWebhook(_projectId: String, _webhookId: String) -> Array<Any> {
         var path: String = "/projects/{projectId}/webhooks/{webhookId}"
 
         path = path.replacingOccurrences(
@@ -779,7 +779,7 @@ class Projects: Service
      * @return array
      */
 
-    func updateWebhook(_projectId: String, _webhookId: String, _name: String, _events: Array<Any>, _url: String, _security: Int, _httpUser: String = "", _httpPass: String = "") -> Array<Any> {
+    open func updateWebhook(_projectId: String, _webhookId: String, _name: String, _events: Array<Any>, _url: String, _security: Int, _httpUser: String = "", _httpPass: String = "") -> Array<Any> {
         var path: String = "/projects/{projectId}/webhooks/{webhookId}"
 
         path = path.replacingOccurrences(
@@ -814,7 +814,7 @@ class Projects: Service
      * @return array
      */
 
-    func deleteWebhook(_projectId: String, _webhookId: String) -> Array<Any> {
+    open func deleteWebhook(_projectId: String, _webhookId: String) -> Array<Any> {
         var path: String = "/projects/{projectId}/webhooks/{webhookId}"
 
         path = path.replacingOccurrences(

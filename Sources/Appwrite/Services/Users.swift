@@ -1,6 +1,6 @@
 
 
-class Users: Service
+open class Users: Service
 {
     /**
      * List Users
@@ -16,7 +16,7 @@ class Users: Service
      * @return array
      */
 
-    func listUsers(_search: String = "", _limit: Int = 25, _offset: Int = 0, _orderType: String = "ASC") -> Array<Any> {
+    open func listUsers(_search: String = "", _limit: Int = 25, _offset: Int = 0, _orderType: String = "ASC") -> Array<Any> {
         let path: String = "/users"
 
 
@@ -44,7 +44,7 @@ class Users: Service
      * @return array
      */
 
-    func createUser(_email: String, _password: String, _name: String = "") -> Array<Any> {
+    open func createUser(_email: String, _password: String, _name: String = "") -> Array<Any> {
         let path: String = "/users"
 
 
@@ -95,7 +95,7 @@ class Users: Service
      * @return array
      */
 
-    func getUserLogs(_userId: String) -> Array<Any> {
+    open func getUserLogs(_userId: String) -> Array<Any> {
         var path: String = "/users/{userId}/logs"
 
         path = path.replacingOccurrences(
@@ -121,7 +121,7 @@ class Users: Service
      * @return array
      */
 
-    func getUserPrefs(_userId: String) -> Array<Any> {
+    open func getUserPrefs(_userId: String) -> Array<Any> {
         var path: String = "/users/{userId}/prefs"
 
         path = path.replacingOccurrences(
@@ -149,7 +149,7 @@ class Users: Service
      * @return array
      */
 
-    func updateUserPrefs(_userId: String, _prefs: String) -> Array<Any> {
+    open func updateUserPrefs(_userId: String, _prefs: String) -> Array<Any> {
         var path: String = "/users/{userId}/prefs"
 
         path = path.replacingOccurrences(
@@ -176,7 +176,7 @@ class Users: Service
      * @return array
      */
 
-    func getUserSessions(_userId: String) -> Array<Any> {
+    open func getUserSessions(_userId: String) -> Array<Any> {
         var path: String = "/users/{userId}/sessions"
 
         path = path.replacingOccurrences(
@@ -202,7 +202,7 @@ class Users: Service
      * @return array
      */
 
-    func deleteUserSessions(_userId: String) -> Array<Any> {
+    open func deleteUserSessions(_userId: String) -> Array<Any> {
         var path: String = "/users/{userId}/sessions"
 
         path = path.replacingOccurrences(
@@ -229,7 +229,7 @@ class Users: Service
      * @return array
      */
 
-    func deleteUserSession(_userId: String, _sessionId: String) -> Array<Any> {
+    open func deleteUserSession(_userId: String, _sessionId: String) -> Array<Any> {
         var path: String = "/users/{userId}/sessions/:session"
 
         path = path.replacingOccurrences(
@@ -257,7 +257,7 @@ class Users: Service
      * @return array
      */
 
-    func updateUserStatus(_userId: String, _status: String) -> Array<Any> {
+    open func updateUserStatus(_userId: String, _status: String) -> Array<Any> {
         var path: String = "/users/{userId}/status"
 
         path = path.replacingOccurrences(
