@@ -8,7 +8,41 @@
 
 **WORK IN PROGRESS - NOT READY FOR USAGE**
 
+## Installation
 
+### Install manually using *Swift package manager*
+
+In your application's *Package.swift* file add this package dependency:
+
+```swift
+// swift-tools-version:5.2
+// The swift-tools-version declares the minimum version of Swift required to build this package.
+
+import PackageDescription
+
+let package = Package(
+    name: "YourSwiftApp",
+    dependencies: [
+        // Here is the AppwriteSwiftSDK dependency declared.
+        .package(name: "AppwriteSwiftSDK", url: "https://github.com/armino-dev/appwrite-swift-sdk.git", from: "0.6.4"),
+    ],
+    targets: [
+        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
+        // Targets can depend on other targets in this package, and on products in packages which this package depends on.
+        .target(
+            name: "YourSwiftApp",
+            // Here is the AppwriteSwiftSDK dependency declared
+            dependencies: ["AppwriteSwiftSDK"]),
+        .testTarget(
+            name: "YourSwiftAppTests",
+            dependencies: ["YourSwiftApp"]),
+    ]
+)
+```
+
+### Install using *HomeBrew*
+
+    comming soon
 
 ## License
 
