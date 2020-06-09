@@ -8,9 +8,13 @@
 
 **WORK IN PROGRESS - NOT READY FOR USAGE**
 
+
+The Swift SDK for Appwrite runs on MacOS, iOS and Linux as it depends only on Foundation.
+
 ## Installation
 
 ### Install manually using *Swift package manager*
+
 
 In your application's *Package.swift* file add this package dependency:
 
@@ -38,6 +42,11 @@ let package = Package(
             dependencies: ["YourSwiftApp"]),
     ]
 )
+```
+
+To generate the XCode Project files run:
+```bash
+    swift package generate-xcodeproj
 ```
 
 ### Install using *HomeBrew*
